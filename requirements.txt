@@ -1,4 +1,4 @@
-apitist~=4.0
+apitist[random]~=4.0
 dataclasses; python_version < '3.7'
 faker~=4.14
 pre-commit~=2.7
