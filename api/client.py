@@ -8,7 +8,7 @@ from apitist import (
     Session,
     session,
 )
-from apitist.decorators import get
+from apitist.decorators import get, post
 
 from common import models as m
 
@@ -30,3 +30,6 @@ class Client:
     def __post_init__(self):
         self.session = init_session(self.host)
 
+    @post("/api/register")
+    def register_req(self, data: m.RegisterReq):
+        return dict(data=data)
