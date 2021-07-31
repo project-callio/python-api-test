@@ -31,6 +31,11 @@ def _unstructure_uuid(uuid):
 convclass.register_hooks(UUID, _structure_uuid, _unstructure_uuid)
 
 
+@dataclass
+class ErrorRes:
+    error: str
+
+
 @transform
 @dataclass
 class RegisterReq:
@@ -47,15 +52,15 @@ class RegisterRes:
     id: UUID
     username: Username
     email: Email
-    full_name: FullName
-    comment: Comment
     created_at: DateTime
-    updated_at: Optional[DateTime]
+    full_name: Optional[FullName] = field(default=None)
+    comment: Optional[Comment] = field(default=None)
+    updated_at: Optional[DateTime] = field(default=None)
 
 
 @dataclass
 class RegisterIntermediate:
     username: Username
     email: Email
-    full_name: FullName
-    comment: Comment
+    full_name: Optional[FullName] = field(default=None)
+    comment: Optional[Comment] = field(default=None)
